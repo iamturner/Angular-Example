@@ -1,0 +1,13 @@
+<p>
+	<input [(ngModel)]="search" placeholder="Filter">
+</p>
+
+<ul>
+	<li *ngFor="let user of users | filter: search">
+		<a routerLink="/users/{{ user.id }}">{{ user.name }}</a>
+	</li>
+</ul>
+
+<p *ngIf="search && (users | filter: search).length == 0">
+	No users found starting with '{{ search }}'
+</p>
